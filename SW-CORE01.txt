@@ -1,0 +1,27 @@
+enable
+conf t
+hostname SW-CORE-01
+vlan 10
+name ADMINISTRACAO
+vlan 20
+name RH
+vlan 30
+name WI-FI
+vlan 40
+name SERVIDORES
+interface f0/24 
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99
+interface f0/23
+switchport mode access
+switchport access vlan 40
+interface g0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,40,99
+interface range f0/1-22
+shutdown
+interface range g0/2
+shutdown
+do wr

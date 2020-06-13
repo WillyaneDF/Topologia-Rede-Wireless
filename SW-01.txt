@@ -1,0 +1,27 @@
+enable
+conf t
+hostname SW-01
+vlan 10
+name ADMINISTRACAO
+vlan 20
+name RH
+vlan 30
+name WI-FI
+interface range f0/1-2
+switchport mode access
+switchport access vlan 10
+interface range f0/3-4
+switchport mode access
+switchport access vlan 20
+interface f0/23
+switchport mode access
+switchport access vlan 30
+interface f0/24
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99
+interface range f0/5-22
+shutdown
+interface range g0/1-2
+shutdown
+do wr
